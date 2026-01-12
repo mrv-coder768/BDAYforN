@@ -29,8 +29,8 @@ p, .tagline{margin-top:15px; color:#ffccff; font-size:1.1em;}
 clip-path: polygon(50% 0%,61% 15%,75% 15%,85% 25%,85% 40%,50% 75%,15% 40%,15% 25%,25% 15%,39% 15%);
 animation:float 5s linear infinite;}
 @keyframes float{to{transform:translateY(-100vh) scale(1.5);opacity:0;}}
-#playMusicCountdown, #playMusicBirthday{margin-top:20px;padding:12px 25px;border:none;border-radius:30px;background:linear-gradient(90deg,#ffcc66,#ff66b3);
-color:white;cursor:pointer;display:none;}
+button{margin-top:20px;padding:12px 25px;border:none;border-radius:30px;background:linear-gradient(90deg,#ffcc66,#ff66b3);
+color:white;cursor:pointer;}
 
 /* Birthday content */
 #birthdayContent{display:none;}
@@ -119,18 +119,22 @@ const countdownInterval = setInterval(()=>{
   sEl.textContent=Math.floor((diff%(1000*60))/1000).toString().padStart(2,'0');
 },1000);
 
-// ---------------- Music ----------------
-const musicCountdown=document.getElementById("musicCountdown");
-const musicBirthday=document.getElementById("musicBirthday");
+// ---------------- Music Buttons ----------------
+const musicCountdown = document.getElementById("musicCountdown");
+const musicBirthday = document.getElementById("musicBirthday");
 
-window.onload=()=>{
+window.onload = () => {
   musicCountdown.play().catch(()=>{document.getElementById("playMusicCountdown").style.display="inline-block";});
 };
-document.getElementById("playMusicCountdown").onclick=()=>{
-  musicCountdown.play(); document.getElementById("playMusicCountdown").style.display="none";
+
+document.getElementById("playMusicCountdown").onclick = () => {
+  musicCountdown.play(); 
+  document.getElementById("playMusicCountdown").style.display = "none";
 };
-document.getElementById("playMusicBirthday").onclick=()=>{
-  musicBirthday.play(); document.getElementById("playMusicBirthday").style.display="none";
+
+document.getElementById("playMusicBirthday").onclick = () => {
+  musicBirthday.play(); 
+  document.getElementById("playMusicBirthday").style.display = "none";
 };
 
 // ---------------- Hearts ----------------
