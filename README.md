@@ -16,6 +16,7 @@ canvas{position:fixed; inset:0; z-index:0;}
 .content{position:relative; z-index:2; max-width:700px; margin:auto; padding:20px;}
 h1{font-size:clamp(2em,5vw,3em); color:#ad7eff; text-shadow:0 0 25px #ff66b3,0 0 50px #ad7eff; animation:glow 2s infinite alternate;}
 @keyframes glow{0%{text-shadow:0 0 15px #ad7eff;}100%{text-shadow:0 0 45px #ff66b3;}}
+
 .countdown{display:flex; justify-content:center; gap:20px; margin-top:30px; flex-wrap:wrap;}
 .time-box{background: linear-gradient(135deg,#6a82fb,#fc5c7d); padding:20px 25px; border-radius:20px;
 box-shadow:0 0 25px rgba(106,130,251,.8);}
@@ -36,7 +37,7 @@ animation:float 5s linear infinite;}
   display:none;
   position:relative;
   z-index:2;
-  padding-bottom:40px; /* extra space at bottom for photo */
+  padding-bottom:20px; /* space at bottom for photo */
 }
 h2{color:#ffd6ff; margin-top:10px;}
 p.gift{color:#ffdd66; font-weight:bold; margin-top:15px; font-size:1.2em;}
@@ -51,15 +52,12 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
   opacity:0.8; z-index:4;
 }
 
-/* Full photo at bottom */
+/* Full photo at bottom without border */
 .birthdayPhoto {
-  width:100%; /* full width */
-  max-width:600px; /* max limit */
-  height:auto; /* keep aspect ratio */
-  border-radius:20px;
-  border:4px solid #ff66b3;
-  box-shadow:0 0 25px #ff66b3,0 0 50px #ad7eff;
+  width:100%;   /* full width */
+  height:auto;  /* keep original ratio */
   margin-top:20px;
+  display:block;
 }
 
 /* Mobile adjustments */
