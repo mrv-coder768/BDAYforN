@@ -11,7 +11,6 @@ html, body{
   background: radial-gradient(circle at bottom,#1e1e2f,#0a0a15);
   color:white; text-align:center; transition: opacity 1s ease;
 }
-body.fade-out{opacity:0; transform:scale(1.05);}
 canvas{position:fixed; inset:0; z-index:0;}
 .content{position:relative; z-index:2; top:50%; transform:translateY(-50%);
 max-width:700px; margin:auto; padding:20px;}
@@ -101,7 +100,6 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
 <script>
 // ---------------- Countdown ----------------
 const target = new Date("2026-01-12T16:47:00").getTime();
-
 const dEl=document.getElementById("days"), hEl=document.getElementById("hours"),
       mEl=document.getElementById("minutes"), sEl=document.getElementById("seconds");
 
@@ -110,8 +108,7 @@ const countdownInterval = setInterval(()=>{
   const diff=target-now;
   if(diff<=0){
     clearInterval(countdownInterval);
-    document.body.classList.add("fade-out");
-    setTimeout(startBirthday,1000);
+    startBirthday(); // immediately start birthday
     return;
   }
   dEl.textContent=Math.floor(diff/(1000*60*60*24)).toString().padStart(2,'0');
