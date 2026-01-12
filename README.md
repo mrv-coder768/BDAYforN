@@ -11,9 +11,9 @@ html, body{
   background: radial-gradient(circle at bottom,#1e1e2f,#0a0a15);
   color:white; text-align:center; transition: opacity 1s ease;
 }
+body.fade-out{opacity:0; transform:scale(1.05);}
 canvas{position:fixed; inset:0; z-index:0;}
-.content{position:relative; z-index:2; top:50%; transform:translateY(-50%);
-max-width:700px; margin:auto; padding:20px;}
+.content{position:relative; z-index:2; max-width:700px; margin:auto; padding:20px;}
 h1{font-size:clamp(2em,5vw,3em); color:#ad7eff; text-shadow:0 0 25px #ff66b3,0 0 50px #ad7eff; animation:glow 2s infinite alternate;}
 @keyframes glow{0%{text-shadow:0 0 15px #ad7eff;}100%{text-shadow:0 0 45px #ff66b3;}}
 .countdown{display:flex; justify-content:center; gap:20px; margin-top:30px; flex-wrap:wrap;}
@@ -23,16 +23,21 @@ box-shadow:0 0 25px rgba(106,130,251,.8);}
 @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
 .time-box small{color:#eee;}
 p, .tagline{margin-top:15px; color:#ffccff; font-size:1.1em;}
+button{margin-top:20px;padding:12px 25px;border:none;border-radius:30px;background:linear-gradient(90deg,#ffcc66,#ff66b3);
+color:white;cursor:pointer;}
 .hearts{position:fixed; inset:0; pointer-events:none; z-index:1;}
 .heart{position:absolute; bottom:0; width:20px; height:20px; background:#ff80c1; opacity:.7;
 clip-path: polygon(50% 0%,61% 15%,75% 15%,85% 25%,85% 40%,50% 75%,15% 40%,15% 25%,25% 15%,39% 15%);
 animation:float 5s linear infinite;}
 @keyframes float{to{transform:translateY(-100vh) scale(1.5);opacity:0;}}
-button{margin-top:20px;padding:12px 25px;border:none;border-radius:30px;background:linear-gradient(90deg,#ffcc66,#ff66b3);
-color:white;cursor:pointer;}
 
 /* Birthday content */
-#birthdayContent{display:none;}
+#birthdayContent{
+  display:none;
+  top:60%; /* move content lower */
+  transform:translateY(-50%);
+  position:relative;
+}
 h2{color:#ffd6ff; margin-top:10px;}
 p.gift{color:#ffdd66; font-weight:bold; margin-top:15px; font-size:1.2em;}
 #btsLogos{position:fixed; inset:0; pointer-events:none; z-index:3;}
@@ -57,6 +62,11 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
   0%{box-shadow:0 0 25px #ff66b3,0 0 50px #ad7eff;}
   100%{box-shadow:0 0 50px #ff66b3,0 0 80px #ad7eff;}
 }
+
+/* Mobile adjustments */
+@media(max-width:480px){
+  #birthdayContent { top:65%; } /* move down more on small phones */
+}
 </style>
 </head>
 <body>
@@ -73,13 +83,13 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
     <div class="time-box"><span id="minutes">00</span><small>Minutes</small></div>
     <div class="time-box"><span id="seconds">00</span><small>Seconds</small></div>
   </div>
-  <p class="tagline">Keep shining like BTS, smiling and spreading love like ARMY 💜🎶</p>
+  <p class="tagline">Keep shining like BTS, smiling like Jimin, and spreading love like ARMY 💜🎶</p>
   <button id="playMusicCountdown">🔊 Play Countdown Music</button>
 </div>
 
 <div class="content" id="birthdayContent">
   <h1>💜 Happy Birthday, Nirmala! 🎂✨</h1>
-  <img src="n.jpeg" alt="Nirmala" class="birthdayPhoto">
+  <img src="nirmala12.jpg" alt="Nirmala" class="birthdayPhoto">
   <h2>Shine Bright Like BTS 💫🎶</h2>
   <p>Dear Nirmala, today is your special day! 🌟<br>
      May your smile light up the world, your dreams come true,<br>
@@ -91,7 +101,7 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
 
 <!-- Music files -->
 <audio id="musicCountdown" loop>
-  <source src="cd.mp3" type="audio/mp3">
+  <source src="Liquid Time-Aakash Gandhi (mp3cut.net).mp3" type="audio/mp3">
 </audio>
 <audio id="musicBirthday" loop>
   <source src="micro.mp3" type="audio/mp3">
@@ -108,7 +118,8 @@ const countdownInterval = setInterval(()=>{
   const diff=target-now;
   if(diff<=0){
     clearInterval(countdownInterval);
-    startBirthday(); // immediately start birthday
+    document.body.classList.add("fade-out");
+    setTimeout(startBirthday,1000);
     return;
   }
   dEl.textContent=Math.floor(diff/(1000*60*60*24)).toString().padStart(2,'0');
