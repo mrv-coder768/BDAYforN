@@ -9,14 +9,12 @@ html, body{
   margin:0; padding:0; height:100%; overflow:hidden;
   font-family:'Poppins',sans-serif;
   background: radial-gradient(circle at bottom,#1e1e2f,#0a0a15);
-  color:white; text-align:center; transition: opacity 1s ease;
+  color:white; text-align:center;
 }
-body.fade-out{opacity:0; transform:scale(1.05);}
 canvas{position:fixed; inset:0; z-index:0;}
 .content{position:relative; z-index:2; max-width:700px; margin:auto; padding:20px;}
 h1{font-size:clamp(2em,5vw,3em); color:#ad7eff; text-shadow:0 0 25px #ff66b3,0 0 50px #ad7eff; animation:glow 2s infinite alternate;}
 @keyframes glow{0%{text-shadow:0 0 15px #ad7eff;}100%{text-shadow:0 0 45px #ff66b3;}}
-
 .countdown{display:flex; justify-content:center; gap:20px; margin-top:30px; flex-wrap:wrap;}
 .time-box{background: linear-gradient(135deg,#6a82fb,#fc5c7d); padding:20px 25px; border-radius:20px;
 box-shadow:0 0 25px rgba(106,130,251,.8);}
@@ -36,8 +34,7 @@ animation:float 5s linear infinite;}
 #birthdayContent{
   display:none;
   position:relative;
-  z-index:2;
-  padding-bottom:20px; /* space at bottom for photo */
+  top:0;
 }
 h2{color:#ffd6ff; margin-top:10px;}
 p.gift{color:#ffdd66; font-weight:bold; margin-top:15px; font-size:1.2em;}
@@ -52,17 +49,19 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
   opacity:0.8; z-index:4;
 }
 
-/* Full photo at bottom without border */
+/* Photo */
 .birthdayPhoto {
-  width:100%;   /* full width */
-  height:auto;  /* keep original ratio */
-  margin-top:20px;
+  width:auto;
+  max-width:90%;
+  height:auto;
+  object-fit:contain;
   display:block;
+  margin:30px auto 0 auto;
 }
 
 /* Mobile adjustments */
 @media(max-width:480px){
-  .birthdayPhoto { max-width:90%; }
+  .birthdayPhoto { max-width:95%; }
 }
 </style>
 </head>
@@ -81,7 +80,7 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
     <div class="time-box"><span id="minutes">00</span><small>Minutes</small></div>
     <div class="time-box"><span id="seconds">00</span><small>Seconds</small></div>
   </div>
-  <p class="tagline">Keep shining like BTS, smiling and spreading love like ARMY 💜🎶</p>
+  <p class="tagline">Keep shining like BTS, smiling like Jimin, and spreading love like ARMY 💜🎶</p>
   <button id="playMusicCountdown">🔊 Play Countdown Music</button>
 </div>
 
@@ -118,8 +117,7 @@ const countdownInterval = setInterval(()=>{
   const diff=target-now;
   if(diff<=0){
     clearInterval(countdownInterval);
-    document.body.classList.add("fade-out");
-    setTimeout(startBirthday,1000);
+    startBirthday();
     return;
   }
   dEl.textContent=Math.floor(diff/(1000*60*60*24)).toString().padStart(2,'0');
@@ -128,7 +126,7 @@ const countdownInterval = setInterval(()=>{
   sEl.textContent=Math.floor((diff%(1000*60))/1000).toString().padStart(2,'0');
 },1000);
 
-// ---------------- Music ----------------
+// ---------------- Music Buttons ----------------
 const musicCountdown = document.getElementById("musicCountdown");
 const musicBirthday = document.getElementById("musicBirthday");
 
