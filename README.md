@@ -86,7 +86,8 @@ canvas{position:fixed; inset:0; z-index:0;}
 
 <script>
 // Countdown
-const target = new Date("2026-01-12T16:47:00").getTime();
+const target = new Date("2026-01-16T00:00:00").getTime();
+
 const dEl=document.getElementById("days"), hEl=document.getElementById("hours"),
       mEl=document.getElementById("minutes"), sEl=document.getElementById("seconds");
 
