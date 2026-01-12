@@ -74,7 +74,7 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
     <div class="time-box"><span id="minutes">00</span><small>Minutes</small></div>
     <div class="time-box"><span id="seconds">00</span><small>Seconds</small></div>
   </div>
-  <p class="tagline">Keep shining like BTS, smiling like Jimin, and spreading love like ARMY 💜🎶</p>
+  <p class="tagline">Keep shining like BTS, smiling and spreading love like ARMY 💜🎶</p>
   <button id="playMusicCountdown">🔊 Play Countdown Music</button>
 </div>
 
@@ -100,7 +100,8 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
 
 <script>
 // ---------------- Countdown ----------------
-const target = new Date("2026-01-16T00:00:00").getTime();
+const target = new Date("2026-01-12T16:47:00").getTime();
+
 const dEl=document.getElementById("days"), hEl=document.getElementById("hours"),
       mEl=document.getElementById("minutes"), sEl=document.getElementById("seconds");
 
