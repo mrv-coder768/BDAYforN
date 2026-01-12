@@ -138,7 +138,8 @@ button#playMusicBtn:hover{transform:scale(1.08);}
 
 <script>
 // ---------------- Countdown ----------------
-const target = new Date("2026-01-16T00:00:00").getTime();
+const target = new Date("2026-01-12T15:38:00").getTime();
+
 const daysEl=document.getElementById("days"),
       hoursEl=document.getElementById("hours"),
       minutesEl=document.getElementById("minutes"),
