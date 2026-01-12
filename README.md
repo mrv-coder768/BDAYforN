@@ -92,7 +92,7 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
 
 <!-- Music files -->
 <audio id="musicCountdown" loop>
-  <source src="Liquid Time-Aakash Gandhi (mp3cut.net).mp3" type="audio/mp3">
+  <source src="cd.mp3" type="audio/mp3">
 </audio>
 <audio id="musicBirthday" loop>
   <source src="micro.mp3" type="audio/mp3">
