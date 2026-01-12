@@ -75,6 +75,7 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
 <div class="hearts" id="hearts"></div>
 <div id="btsLogos"></div>
 
+<!-- Countdown page -->
 <div class="content" id="countdownContent">
   <h1>🎂 Countdown to Nirmala’s Birthday 🎂💜</h1>
   <div class="countdown">
@@ -87,21 +88,23 @@ opacity:0.8; animation:floatLogo 5s linear forwards;}
   <button id="playMusicCountdown">🔊 Play Countdown Music</button>
 </div>
 
+<!-- Birthday page -->
 <div class="content" id="birthdayContent">
   <h1>💜 Happy Birthday, Nirmala! 🎂✨</h1>
-  <img src="nirmala12.jpg" alt="Nirmala" class="birthdayPhoto">
   <h2>Shine Bright Like BTS 💫🎶</h2>
   <p>Dear Nirmala, today is your special day! 🌟<br>
      May your smile light up the world, your dreams come true,<br>
      and your days be as joyful as your favorite BTS songs.</p>
   <p class="gift">🎁 Your Special Gift: A token of love 💜</p>
   <p>Keep shining, dancing, and smiling like only you can. Happy Birthday 💖🎶</p>
+  <!-- Photo at the bottom -->
+  <img src="n.jpeg" alt="Nirmala" class="birthdayPhoto">
   <button id="playMusicBirthday">🔊 Play Birthday Music</button>
 </div>
 
 <!-- Music files -->
 <audio id="musicCountdown" loop>
-  <source src="Liquid Time-Aakash Gandhi (mp3cut.net).mp3" type="audio/mp3">
+  <source src="cd.mp3" type="audio/mp3">
 </audio>
 <audio id="musicBirthday" loop>
   <source src="micro.mp3" type="audio/mp3">
