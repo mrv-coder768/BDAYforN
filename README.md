@@ -132,8 +132,10 @@ button{
   <h1>💜 Happy Birthday Nirmala 🎂</h1>
 
   <p>
-    May your life be filled with smiles, happiness and love 💫  
-    Stay bright, stay kind, always shine 💜
+Happy Birthday, Nirmala 💜
+You are truly special to me, not just today but always
+I hope life surprises you with everything beautiful, just like you deserve 🌷.Keep shining like a star, dreaming big, and spreading happiness wherever you go.
+May your life always have music, love, and light ✨
   </p>
 
   <img src="n.jpeg" class="birthdayPhoto" alt="Nirmala">
