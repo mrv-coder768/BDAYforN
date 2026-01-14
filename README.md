@@ -160,7 +160,8 @@ May your life always have music, love, and light ✨
 
 <script>
 /* Countdown */
-const target = new Date("2026-01-16T00:00:00").getTime();
+const target = new Date("2026-01-14T10:00:00").getTime();
+
 
 const d=document.getElementById("days"),
 h=document.getElementById("hours"),
