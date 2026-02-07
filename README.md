@@ -173,8 +173,7 @@ button{
   <h1>💜 Happy Birthday Nirmala 🎂</h1>
 
   <p>
-Happy Birthday, Nirmala 💜  
-This is a small delayed gift and a big wish.
+This is a small delayed gift and a big wish......
   </p>
 
   <img src="n.jpeg" class="birthdayPhoto" alt="Nirmala">
@@ -273,7 +272,8 @@ const messageLines=[
   "hear ARMY chants live,",
   "and feel this dream come true 🌟",
   "Until then — keep believing.",
-  "ARMY forever 💜"
+  "ARMY forever 💜",
+  "WAITING FOR 16-JAN-2027"
 ];
 
 document.getElementById("ticketGift").onclick=()=>{
