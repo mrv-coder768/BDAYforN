@@ -273,7 +273,7 @@ const messageLines=[
   "and feel this dream come true 🌟",
   "Until then — keep believing.",
   "ARMY forever 💜",
-  "WAITING FOR 16-JAN-2027"
+  "WAITING FOR 16-JAN-2027....."
 ];
 
 document.getElementById("ticketGift").onclick=()=>{
