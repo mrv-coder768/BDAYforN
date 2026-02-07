@@ -106,6 +106,47 @@ button{
   border-radius:15px;
   background:black;
 }
+
+/* 🎁 Ticket Gift */
+#ticketGift{
+  margin-top:25px;
+  cursor:pointer;
+}
+
+#ticketGift span{
+  font-size:70px;
+  display:inline-block;
+  animation:bounce 1.6s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-14px);}
+}
+
+#ticketArea{
+  display:none;
+  margin-top:25px;
+}
+
+#ticketImage{
+  width:100%;
+  max-width:600px;
+  border-radius:18px;
+  box-shadow:0 0 30px rgba(123,44,255,.6);
+}
+
+/* 💜 Ticket Message */
+.ticketMessage{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(255,255,255,0.08);
+  border-radius:14px;
+  font-size:15px;
+  line-height:1.7;
+  box-shadow:0 0 15px rgba(173,126,255,.4);
+  min-height:120px;
+}
 </style>
 </head>
 
@@ -115,7 +156,7 @@ button{
 
 <!-- COUNTDOWN -->
 <div class="content" id="countdownContent">
-  <h1>🎂 -Countdown to Nirmala’s Birthday- 💜</h1>
+  <h1>🎂 Countdown to Nirmala’s Birthday 💜</h1>
 
   <div class="countdown">
     <div class="time-box"><span id="days">00</span><div>Days</div></div>
@@ -132,20 +173,31 @@ button{
   <h1>💜 Happy Birthday Nirmala 🎂</h1>
 
   <p>
-Happy Birthday, Nirmala 💜
-You are truly special to me, not just today but always
-I hope life surprises you with everything beautiful, just like you deserve 🌷.Keep shining like a star, dreaming big, and spreading happiness wherever you go.
-May your life always have music, love, and light ✨
+Happy Birthday, Nirmala 💜  
+This is a small delayed gift and a big wish.
   </p>
 
   <img src="n.jpeg" class="birthdayPhoto" alt="Nirmala">
 
+  <!-- 🎁 TICKET GIFT -->
+  <div id="ticketGift">
+    <span>🎁</span>
+    <p>Open your special gift</p>
+  </div>
+
+  <!-- TICKET -->
+  <div id="ticketArea">
+    <img src="ticket.jpeg" id="ticketImage" alt="BTS Ticket">
+
+    <div class="ticketMessage" id="ticketMessage"></div>
+
+    <button onclick="downloadTicket()">⬇️ Download Ticket</button>
+  </div>
+
   <button id="playMusicBirthday">🎶 Play Birthday Song</button>
 
-  <!-- VIDEO -->
   <video class="birthdayVideo" controls>
     <source src="video.mp4" type="video/mp4">
-    Your browser does not support video.
   </video>
 </div>
 
@@ -158,11 +210,14 @@ May your life always have music, love, and light ✨
   <source src="micro.mp3" type="audio/mp3">
 </audio>
 
+<!-- 🎵 Ticket Song -->
+<audio id="ticketSong" loop>
+  <source src="ticket-song.mp3" type="audio/mp3">
+</audio>
+
 <script>
 /* Countdown */
 const target = new Date("2026-01-16T00:00:00").getTime();
-
-
 
 const d=document.getElementById("days"),
 h=document.getElementById("hours"),
@@ -185,9 +240,9 @@ const timer=setInterval(()=>{
 /* Music */
 const mc=document.getElementById("musicCountdown");
 const mb=document.getElementById("musicBirthday");
+const ts=document.getElementById("ticketSong");
 
 document.getElementById("playMusicCountdown").onclick=()=>mc.play();
-
 document.getElementById("playMusicBirthday").onclick=()=>mb.play();
 
 /* Show birthday */
@@ -208,6 +263,60 @@ function heart(){
   setTimeout(()=>h.remove(),6000);
 }
 setInterval(heart,400);
+
+/* 🎁 Ticket logic */
+const messageLines=[
+  "💜 Dear Nirmala 💜",
+  "This ticket is not just a picture.",
+  "It is a promise.",
+  "One day you WILL attend a real BTS concert,",
+  "hear ARMY chants live,",
+  "and feel this dream come true 🌟",
+  "Until then — keep believing.",
+  "ARMY forever 💜"
+];
+
+document.getElementById("ticketGift").onclick=()=>{
+  document.getElementById("ticketGift").style.display="none";
+  document.getElementById("ticketArea").style.display="block";
+  mb.pause();
+  ts.play().catch(()=>{});
+  typeMessage();
+};
+
+function typeMessage(){
+  const box=document.getElementById("ticketMessage");
+  let line=0, char=0;
+  box.innerHTML="";
+
+  const typer=setInterval(()=>{
+    if(line>=messageLines.length){
+      clearInterval(typer);
+      return;
+    }
+    if(char<messageLines[line].length){
+      box.innerHTML+=messageLines[line].charAt(char);
+      char++;
+    }else{
+      box.innerHTML+="<br>";
+      line++;
+      char=0;
+    }
+  },40);
+}
+
+function downloadTicket(){
+  const img=document.getElementById("ticketImage");
+  const canvas=document.createElement("canvas");
+  const ctx=canvas.getContext("2d");
+  canvas.width=img.naturalWidth;
+  canvas.height=img.naturalHeight;
+  ctx.drawImage(img,0,0);
+  const a=document.createElement("a");
+  a.download="Nirmala_BTS_Ticket.png";
+  a.href=canvas.toDataURL("image/png");
+  a.click();
+}
 </script>
 
 </body>
