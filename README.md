@@ -186,7 +186,7 @@ This is a small delayed gift and a big wish......
 
   <!-- TICKET -->
   <div id="ticketArea">
-    <img src="ticket1.jpeg" id="ticketImage" alt="BTS Ticket">
+    <img src="ticket2.jpeg" id="ticketImage" alt="BTS Ticket">
 
     <div class="ticketMessage" id="ticketMessage"></div>
 
